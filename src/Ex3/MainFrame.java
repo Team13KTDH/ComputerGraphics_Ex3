@@ -37,20 +37,14 @@ public class MainFrame extends JFrame implements ActionListener {
 		this.setTitle("Ex3 - NHOM 13");
 
 		// o trong nhap so lieu
-		tf1.setBounds(140, 50, 100, 40);
-		tf1.setFocusable(true);
-		tf1.setText("");
-		tf1.setEditable(true);
+
 
 		tf2.setBounds(140, 110, 100, 40);
 		tf2.setFocusable(true);
 		tf2.setText("");
 		tf2.setEditable(true);
 
-		label1.setBounds(20, 50, 150, 40);
-		label1.setEnabled(false);
-		label1.setText("Tam O: ");
-		label1.setFont(new Font("Ink Free", Font.BOLD, 20));
+
 
 		label2.setBounds(20, 110, 150, 40);
 		label2.setEnabled(false);
@@ -70,10 +64,10 @@ public class MainFrame extends JFrame implements ActionListener {
 		label6.setFont(new Font("Ink Free", Font.CENTER_BASELINE, 20));
 
 		this.add(label2);
-		this.add(label1);
+
 
 		this.add(tf2);
-		this.add(tf1);
+
 		
 		this.add(label6);
 		// nut0
@@ -87,50 +81,24 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	public void xuLy() {
 		try {
-			int a = Integer.parseInt(tf1.getText()) * 15;
-			int b = Integer.parseInt(tf2.getText()) * 15;
-			int c = Integer.parseInt(tf3.getText()) * 15;
-			int d = Integer.parseInt(tf4.getText()) * 15;
-
-			if (a >= -375 && a <= 375 && b >= -375 && b <= 375 && c >= -375 && c <= 375 && d >= -375 && d <= 375) {
-				if (a <= 0)
-					a = 375 + a;
-				else
-					a = 375 + a;
-				if (b <= 0)
-					b = 375 - b;
-				else
-					b = 375 - b;
-				if (c <= 0)
-					c = 375 + c;
-				else
-					c = 375 + c;
-				if (d <= 0)
-					d = 375 - d;
-				else
-					d = 375 - d;
-				sf.a = a;
-				sf.b = b;
-				sf.c = c;
-				sf.d = d;
-				System.out.println(sf.a);
-				System.out.println(sf.b);
-				System.out.println(sf.c);
-				System.out.println(sf.d);
+			int r = Integer.parseInt(tf2.getText());
+			if (r<=50) {
+				sf.R = r;
+				System.out.print(sf.R);
 				sf.repaint();
 			} else {
 				String message = "Vui long nhap dung dinh dang! ";
 				JOptionPane.showMessageDialog(new JFrame(), message, "Canh bao", JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (Exception q) {
-			String message = "Vui long nhap dung dinh dang! ";
+			String message = "Vui long nhap dung dinh dang cc! ";
 			JOptionPane.showMessageDialog(new JFrame(), message, "Canh bao", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if ("gach noi".equals(e.getActionCommand())) {
+		if ("DRAW!".equals(e.getActionCommand())) {
 			sf.index = 0;
 			xuLy();
 		}
