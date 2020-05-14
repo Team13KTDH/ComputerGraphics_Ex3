@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 public class Surface extends JPanel {
 	// toa do
 	int R;
-
 	int index;
 
 	@Override
@@ -54,9 +53,9 @@ public class Surface extends JPanel {
 
 	// Ve 8 diem doi xung
 	void Put8Pixel(Graphics2D g2d, int x, int y) {
-		g2d.setStroke(new BasicStroke(10));
+		g2d.setStroke(new BasicStroke(5));
 		g2d.setColor(Color.BLUE);
-	
+
 		y = 375 - y * 5;
 		x = 375 - x * 5;
 		g2d.drawLine(375, 375, 375, 375);
@@ -68,11 +67,11 @@ public class Surface extends JPanel {
 		g2d.drawLine(750 - x, 750 - y, 750 - x, 750 - y);
 		g2d.drawLine(750 - x, y, 750 - x, y);
 		g2d.drawLine(y, 750 - x, y, 750 - x);
-	} 
+	}
 
 	public void drawCircle(Graphics2D g2d, int R) {
 		float p;
-		int d=0;
+		int d = 0;
 		int x = 0, y = R;
 		Put8Pixel(g2d, x, y);
 		p = 1 - R;
@@ -84,9 +83,9 @@ public class Surface extends JPanel {
 				y--;
 			}
 			x++;
-			if(d % 3==0) Put8Pixel(g2d, x, y);
+			if (d % 13 != 0)
+				Put8Pixel(g2d, x, y);
 			d++;
 		}
-		
 	}
 }

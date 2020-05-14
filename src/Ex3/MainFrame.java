@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
 import javax.swing.*;
 
 public class MainFrame extends JFrame implements ActionListener {
@@ -27,7 +29,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	// ham khoi tao
 	public MainFrame() {
-		// ham khoi tao cac gia trido hoa
+		// ham khoi tao cac gia tri do hoa
 		initUI();
 	}
 
@@ -38,18 +40,20 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		// o trong nhap so lieu
 
-
 		tf2.setBounds(140, 110, 100, 40);
 		tf2.setFocusable(true);
 		tf2.setText("");
 		tf2.setEditable(true);
 
-
-
 		label2.setBounds(20, 110, 150, 40);
 		label2.setEnabled(false);
 		label2.setText("Ban Kinh R: ");
 		label2.setFont(new Font("Ink Free", Font.BOLD, 20));
+		
+		label3.setBounds(50, 600, 150, 40);
+		label3.setEnabled(false);
+		label3.setText("Limit: R <= 70 ");
+		label3.setFont(new Font("Ink Free", Font.BOLD, 20));
 
 		// nut thu nhat
 		bt0.setText("DRAW!");
@@ -57,19 +61,19 @@ public class MainFrame extends JFrame implements ActionListener {
 		bt0.setBorder(BorderFactory.createBevelBorder(1));
 		bt0.setFocusable(false);
 		bt0.setFont(new Font("Ink Free", Font.CENTER_BASELINE, 16));
+		bt0.setMnemonic(KeyEvent.VK_ENTER);
+		this.getRootPane().setDefaultButton(bt0);
+		
 
 		label6.setBounds(50, 640, 600, 40);
 		label6.setEnabled(false);
-		label6.setText("NOTE!!! 15 pixels/square  ");
+		label6.setText("NOTE!!! 5 pixels/square  ");
 		label6.setFont(new Font("Ink Free", Font.CENTER_BASELINE, 20));
 
 		this.add(label2);
-
-
 		this.add(tf2);
-
-		
 		this.add(label6);
+		this.add(label3);
 		// nut0
 		this.add(bt0);
 		bt0.setActionCommand("DRAW!");
@@ -79,10 +83,19 @@ public class MainFrame extends JFrame implements ActionListener {
 		this.add(sf);
 	}
 
+	public void keyPressed(KeyEvent e) {
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_ENTER:
+			sf.index = 0;
+			xuLy();
+			break;
+		}
+	}
+
 	public void xuLy() {
 		try {
 			int r = Integer.parseInt(tf2.getText());
-			if (r<=50) {
+			if (r <= 70) {
 				sf.R = r;
 				System.out.print(sf.R);
 				sf.repaint();
@@ -91,14 +104,14 @@ public class MainFrame extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(new JFrame(), message, "Canh bao", JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (Exception q) {
-			String message = "Vui long nhap dung dinh dang cc! ";
+			String message = "Vui long nhap dung dinh dang! ";
 			JOptionPane.showMessageDialog(new JFrame(), message, "Canh bao", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if ("DRAW!".equals(e.getActionCommand())) {
+		if ("DRAW!".equals(e.getActionCommand()) ) {
 			sf.index = 0;
 			xuLy();
 		}
