@@ -74,7 +74,7 @@ public class Surface extends JPanel {
 		int d = 0;
 		int x = 0, y = R;
 		Put8Pixel(g2d, x, y);
-		p = 1 - R;
+		p = 5/4 - R;
 		while (x < y) {
 			if (p < 0)
 				p += 2 * x + 3;
